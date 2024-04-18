@@ -1,9 +1,8 @@
 package org.myungkeun.crud_r2dbc_webflux_240418.services.impl;
 
 import org.myungkeun.crud_r2dbc_webflux_240418.config.jwt.JwtTokenUtil;
-import org.myungkeun.crud_r2dbc_webflux_240418.dto.login.LoginRequest;
-import org.myungkeun.crud_r2dbc_webflux_240418.dto.login.LoginResponse;
-import org.myungkeun.crud_r2dbc_webflux_240418.dto.register.RegisterRequest;
+import org.myungkeun.crud_r2dbc_webflux_240418.dto.auth.LoginRequest;
+import org.myungkeun.crud_r2dbc_webflux_240418.dto.auth.RegisterRequest;
 import org.myungkeun.crud_r2dbc_webflux_240418.entities.Role;
 import org.myungkeun.crud_r2dbc_webflux_240418.entities.User;
 import org.myungkeun.crud_r2dbc_webflux_240418.repositories.UserRepository;

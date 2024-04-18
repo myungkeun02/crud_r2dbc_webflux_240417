@@ -1,11 +1,10 @@
 package org.myungkeun.crud_r2dbc_webflux_240418.controllers;
 
-import lombok.AllArgsConstructor;
 import org.myungkeun.crud_r2dbc_webflux_240418.dto.base.BaseResponse;
-import org.myungkeun.crud_r2dbc_webflux_240418.dto.login.LoginRequest;
-import org.myungkeun.crud_r2dbc_webflux_240418.dto.login.LoginResponse;
-import org.myungkeun.crud_r2dbc_webflux_240418.dto.register.RegisterRequest;
-import org.myungkeun.crud_r2dbc_webflux_240418.dto.register.RegisterResponse;
+import org.myungkeun.crud_r2dbc_webflux_240418.dto.auth.LoginRequest;
+import org.myungkeun.crud_r2dbc_webflux_240418.dto.auth.LoginResponse;
+import org.myungkeun.crud_r2dbc_webflux_240418.dto.auth.RegisterRequest;
+import org.myungkeun.crud_r2dbc_webflux_240418.dto.auth.RegisterResponse;
 import org.myungkeun.crud_r2dbc_webflux_240418.services.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

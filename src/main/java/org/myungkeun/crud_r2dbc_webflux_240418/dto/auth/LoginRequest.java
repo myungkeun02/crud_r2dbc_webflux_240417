@@ -1,4 +1,4 @@
-package org.myungkeun.crud_r2dbc_webflux_240418.dto.register;
+package org.myungkeun.crud_r2dbc_webflux_240418.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class RegisterRequest {
-    private String username;
+
+public class LoginRequest {
     private String email;
-    private String phone;
     private String password;
 }

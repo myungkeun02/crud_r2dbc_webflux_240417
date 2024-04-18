@@ -1,4 +1,4 @@
-package org.myungkeun.crud_r2dbc_webflux_240418.dto.login;
+package org.myungkeun.crud_r2dbc_webflux_240418.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
