@@ -25,27 +25,41 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Mono<Blog> getBlogById(Long id) {
         return blogRepository.findBlogById(id)
-                .switchIfEmpty(Mono.error(new RuntimeException("blog not found")))
+                .switchIfEmpty(Mono.error(new RuntimeException("blog not found")));
     }
 
     @Override
     public Mono<Blog> updateBlogById(Long id, BlogRequest request) {
-        Blog oldBlog = blogRepository.findBlogById(id).block();
-        return null;
+        return blogRepository.findBlogById(id)
+                .flatMap(blog -> {
+                    String newTitle = request.getTitle();
+                    String newDescription = request.getDescription();
+                    String newCategory = request.getCategory();
+
+                    if (newTitle != null && !newTitle.isEmpty()) {
+                        blog.setTitle(newTitle);
+                    }
+                    if (newDescription != null && !newDescription.isEmpty()) {
+                        blog.setDescription(newDescription);
+                    }
+                    if (newCategory != null && !newCategory.isEmpty()) {
+                        blog.setCategory(newCategory);
+                    }
+                    return blogRepository.save(blog);
+                })
+                .switchIfEmpty(Mono.error(new RuntimeException("Blog not found with id: " + id)));
     }
+
 
     @Override
     public Mono<String> deleteBlogById(Long id) {
-        Blog oldBlog = blogRepository.findBlogById(id)
-                .map(blog -> {
-                    blogRepository.delete(blog);
-                    return "success";
-                })
-                .switchIfEmpty(Mono.<String>error(new RuntimeException("blog not found")));
+        return blogRepository.findBlogById(id)
+                .flatMap(blog -> blogRepository.delete(blog).then(Mono.just("success")))
+                .switchIfEmpty(Mono.error(new RuntimeException("Blog not found with id: " + id)));
     }
 
     @Override
     public Flux<Blog> getAllBlogs() {
-        return null;
+        return blogRepository.findAll();
     }
 }
